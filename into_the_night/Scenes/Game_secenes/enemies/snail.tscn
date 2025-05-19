@@ -1,0 +1,113 @@
+[gd_scene load_steps=14 format=3 uid="uid://behlu84d84c0m"]
+
+[ext_resource type="Texture2D" uid="uid://dbhow5amu8a7s" path="res://Assets/Mob/Snail/walk-Sheet.png" id="1_nsjvy"]
+[ext_resource type="Script" uid="uid://kqsfhiv8u786" path="res://Script/GameScript/snail.gd" id="1_qjijy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjijy"]
+atlas = ExtResource("1_nsjvy")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnba0"]
+atlas = ExtResource("1_nsjvy")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_casb8"]
+atlas = ExtResource("1_nsjvy")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqs8f"]
+atlas = ExtResource("1_nsjvy")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dokh"]
+atlas = ExtResource("1_nsjvy")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cyufb"]
+atlas = ExtResource("1_nsjvy")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdrdu"]
+atlas = ExtResource("1_nsjvy")
+region = Rect2(288, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vib7w"]
+atlas = ExtResource("1_nsjvy")
+region = Rect2(336, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n2nmr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjijy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnba0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_casb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqs8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dokh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cyufb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdrdu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vib7w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7105"]
+size = Vector2(171, 22)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h7105"]
+radius = 17.0
+
+[node name="snail" type="CharacterBody2D"]
+script = ExtResource("1_qjijy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n2nmr")
+frame_progress = 0.482436
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4, 5)
+shape = SubResource("RectangleShape2D_h7105")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-12, 4, -12, 1, -11, 1, -11, 0, -10, 0, -10, -1, -12, -1, -12, -2, -13, -2, -13, -5, -12, -5, -12, -6, -9, -6, -9, -5, -7, -5, -7, -6, -4, -6, -4, -5, -3, -5, -3, 0, -4, 1, -4, 2, -5, 2, -5, 4, -4, 4, -4, 2, -3, 2, -3, 0, -2, -1, -2, -2, -1, -2, -1, -3, 1, -3, 1, -3, 1, -4, 8, -4, 8, -3, 10, -3, 10, -2, 11, -2, 11, -1, 12, -1, 12, 0, 13, 0, 13, 2, 14, 2, 14, 9, 13, 9, 13, 11, 12, 11, 12, 13, 13, 13, 13, 14, 11, 14, 11, 15, 12, 15, 12, 16, -11, 16, -11, 15, -12, 15, -12, 14, -13, 14, -13, 10, -12, 10, -12, 9, -13, 9, -13, 5, -12, 5)
+
+[node name="sanil_hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sanil_hitbox"]
+position = Vector2(-1, 5)
+shape = SubResource("CircleShape2D_h7105")
+
+[node name="take_damage_cooldown" type="Timer" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -1.0
+offset_top = 17.0
+offset_right = 3.0
+offset_bottom = 44.0
+show_percentage = false
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="sanil_hitbox" to="." method="_on_sanil_hitbox_body_entered"]
+[connection signal="body_exited" from="sanil_hitbox" to="." method="_on_sanil_hitbox_body_exited"]
+[connection signal="timeout" from="take_damage_cooldown" to="." method="_on_take_damage_cooldown_timeout"]

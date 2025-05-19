@@ -1,0 +1,141 @@
+[gd_scene load_steps=18 format=3 uid="uid://0ksyo8ineveh"]
+
+[ext_resource type="Texture2D" uid="uid://tes3x6ynexcq" path="res://Assets/Mob/Boar/Idle/Idle-Sheet.png" id="1_bj0ns"]
+[ext_resource type="Script" uid="uid://cqswls0jpnrbs" path="res://Script/GameScript/brown_boar.gd" id="1_s8u3g"]
+[ext_resource type="Texture2D" uid="uid://dlfqgbl1k0rqm" path="res://Assets/Mob/Boar/Run/Run-Sheet.png" id="3_tuwnt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8u3g"]
+atlas = ExtResource("1_bj0ns")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqtnj"]
+atlas = ExtResource("1_bj0ns")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxntk"]
+atlas = ExtResource("1_bj0ns")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lbru"]
+atlas = ExtResource("1_bj0ns")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iv6py"]
+atlas = ExtResource("3_tuwnt")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atpox"]
+atlas = ExtResource("3_tuwnt")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hseo"]
+atlas = ExtResource("3_tuwnt")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_higwj"]
+atlas = ExtResource("3_tuwnt")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emtes"]
+atlas = ExtResource("3_tuwnt")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7i12"]
+atlas = ExtResource("3_tuwnt")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e5ys5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8u3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqtnj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxntk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lbru")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iv6py")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atpox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hseo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_higwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emtes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7i12")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwh6p"]
+size = Vector2(210, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iv6py"]
+size = Vector2(69, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tuwnt"]
+size = Vector2(92, 50)
+
+[node name="brown_boar" type="CharacterBody2D"]
+script = ExtResource("1_s8u3g")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1, -29.625)
+scale = Vector2(1.83333, 1.83594)
+sprite_frames = SubResource("SpriteFrames_e5ys5")
+animation = &"idle"
+frame_progress = 0.515272
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-1, -8)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-4, -23.5)
+shape = SubResource("RectangleShape2D_lwh6p")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, -25.5)
+shape = SubResource("RectangleShape2D_iv6py")
+
+[node name="brown_boar_hitbox" type="Area2D" parent="."]
+position = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="brown_boar_hitbox"]
+position = Vector2(-4, -16)
+shape = SubResource("RectangleShape2D_tuwnt")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+modulate = Color(5.39064e-06, 0.700144, 0.227031, 1)
+offset_left = -15.0
+offset_right = 13.0
+offset_bottom = 4.0
+show_percentage = false
+
+[node name="take_damage_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

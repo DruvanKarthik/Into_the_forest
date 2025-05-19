@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0eynflc1hs7j"]
+
+[ext_resource type="FontFile" uid="uid://cj6d2u4ap8513" path="res://Assets/Background/chailce-noggin-font/ChailceNogginRegular-2OXoW.ttf" id="1_aqsnd"]
+[ext_resource type="Script" uid="uid://beiyiidifvg2m" path="res://Script/Ui_script/options_menu.gd" id="1_r042i"]
+[ext_resource type="PackedScene" uid="uid://bosgeq0yuaudk" path="res://Scenes/Ui/settings_tab_container.tscn" id="3_17a8m"]
+
+[node name="Options_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r042i")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -48
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_aqsnd")
+theme_override_font_sizes/font_size = 32
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings_Tab_Container" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_17a8m")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Exit_Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_aqsnd")
+text = "Exit"

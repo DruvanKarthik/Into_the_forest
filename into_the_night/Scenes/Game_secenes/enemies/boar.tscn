@@ -1,0 +1,201 @@
+[gd_scene load_steps=24 format=3 uid="uid://b2oxmk27wkr3p"]
+
+[ext_resource type="Script" uid="uid://xlombidrm3ps" path="res://Script/GameScript/boar.gd" id="1_1q07b"]
+[ext_resource type="Texture2D" uid="uid://dh6by1cvnbkur" path="res://Assets/Mob/Boar/Idle/Idle-Sheet-White.png" id="1_t5ix8"]
+[ext_resource type="Texture2D" uid="uid://du1jl7hfiwarm" path="res://Assets/Mob/Boar/Walk/Walk-Base-Sheet-White.png" id="2_t5ix8"]
+[ext_resource type="Texture2D" uid="uid://wk8egnsth67q" path="res://Assets/Mob/Boar/Run/Run-Sheet-White.png" id="3_s6gi8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fq3jf"]
+atlas = ExtResource("1_t5ix8")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5ix8"]
+atlas = ExtResource("1_t5ix8")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1q07b"]
+atlas = ExtResource("1_t5ix8")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6gi8"]
+atlas = ExtResource("1_t5ix8")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xst6f"]
+atlas = ExtResource("3_s6gi8")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0psi"]
+atlas = ExtResource("3_s6gi8")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h12c6"]
+atlas = ExtResource("3_s6gi8")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lnwh"]
+atlas = ExtResource("3_s6gi8")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0n1a6"]
+atlas = ExtResource("3_s6gi8")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v336t"]
+atlas = ExtResource("3_s6gi8")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwb0p"]
+atlas = ExtResource("2_t5ix8")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sp3hi"]
+atlas = ExtResource("2_t5ix8")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p5nm"]
+atlas = ExtResource("2_t5ix8")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pixix"]
+atlas = ExtResource("2_t5ix8")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bttn"]
+atlas = ExtResource("2_t5ix8")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17jp5"]
+atlas = ExtResource("2_t5ix8")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iwb0p"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fq3jf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5ix8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1q07b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6gi8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xst6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0psi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h12c6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lnwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0n1a6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v336t")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwb0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sp3hi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p5nm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pixix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bttn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17jp5")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6gi8"]
+size = Vector2(160, 29)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s6gi8"]
+radius = 23.0217
+
+[node name="Boar" type="CharacterBody2D"]
+light_mask = 3
+visibility_layer = 3
+script = ExtResource("1_1q07b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(0, -13)
+sprite_frames = SubResource("SpriteFrames_iwb0p")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.857625
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(2, -7)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(5, -3.5)
+shape = SubResource("RectangleShape2D_s6gi8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(2, -7)
+polygon = PackedVector2Array(-1, 6, -1, 7, 1, 7, 2, 10, 9, 10, 10, 10, 10, 6, 13, 6, 13, 5, 15, 5, 15, 4, 18, 4, 18, 0, 18, -1, 17, -1, 17, -2, 17, -3, 12, -3, 12, -2, 11, -2, 11, -6, 10, -6, 10, -8, 11, -8, 11, -10, 10, -10, 10, -11, 11, -11, 11, -14, 7, -14, 7, -16, 5, -16, 5, -15, 4, -15, 4, -16, 3, -16, 3, -17, 1, -17, 1, -16, -1, -16, -1, -15, -2, -16, -5, -16, -5, -15, -7, -15, -7, -13, -10, -13, -10, -10, -11, -10, -11, -8, -12, -8, -12, -2, -13, -2, -13, -1, -18, -1, -18, 0, -19, 0, -19, 2, -20, 2, -20, 7, -18, 7, -18, 5, -17, 5, -17, 4, -16, 4, -16, 3, -14, 3, -14, 4, -12, 5, -11, 10, -3, 10, -3, 8, -2, 8, -2, 7, -2, 6)
+
+[node name="boar_hitbox" type="Area2D" parent="."]
+position = Vector2(2, -9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boar_hitbox"]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_s6gi8")
+
+[node name="take_damage_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+modulate = Color(0.175159, 0.692934, 0.223371, 1)
+offset_left = -19.0
+offset_top = 3.0
+offset_right = 67.0
+offset_bottom = 15.0
+scale = Vector2(0.5, 0.5)
+show_percentage = false
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="boar_hitbox" to="." method="_on_boar_hitbox_body_entered"]
+[connection signal="body_exited" from="boar_hitbox" to="." method="_on_boar_hitbox_body_exited"]
+[connection signal="timeout" from="take_damage_cooldown" to="." method="_on_take_damage_cooldown_timeout"]

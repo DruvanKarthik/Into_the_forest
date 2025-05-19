@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://x5jp4rll6i6k"]
+
+[ext_resource type="Script" uid="uid://nun3g8h758yy" path="res://Script/GameScript/coinlcollection.gd" id="1_gvuap"]
+[ext_resource type="Texture2D" uid="uid://bsy057lntqh7d" path="res://Assets/qgZ_Mx-removebg-preview.png" id="1_qhfys"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gvuap")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 6.0
+offset_right = 78.0
+offset_bottom = 29.0
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 323.0
+offset_bottom = 254.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_qhfys")

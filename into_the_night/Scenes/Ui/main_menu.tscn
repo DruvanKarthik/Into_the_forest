@@ -1,0 +1,103 @@
+[gd_scene load_steps=8 format=3 uid="uid://degt1huy36ovq"]
+
+[ext_resource type="Script" uid="uid://cfxuec8x5q7rb" path="res://Script/Ui_script/main_menu.gd" id="1_4p4ur"]
+[ext_resource type="Texture2D" uid="uid://cle2m78y0ee1q" path="res://Assets/Background/Background.png" id="1_sxfcg"]
+[ext_resource type="FontFile" uid="uid://cj6d2u4ap8513" path="res://Assets/Background/chailce-noggin-font/ChailceNogginRegular-2OXoW.ttf" id="2_4p4ur"]
+[ext_resource type="Texture2D" uid="uid://wytp6okr3wlw" path="res://Assets/HUD/Base-01.png" id="3_fgwqc"]
+[ext_resource type="PackedScene" uid="uid://c0eynflc1hs7j" path="res://Scenes/Ui/options_menu.tscn" id="5_fgwqc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yyf7u"]
+texture = ExtResource("3_fgwqc")
+region_rect = Rect2(242, 59, 59, 26)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uqtq7"]
+texture = ExtResource("3_fgwqc")
+region_rect = Rect2(243, 59, 58, 26)
+
+[node name="Main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4p4ur")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sxfcg")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Seperator" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0.345098, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_4p4ur")
+theme_override_font_sizes/font_size = 65
+text = "Into The Night"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Start_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(110, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4p4ur")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yyf7u")
+text = "Start Gmae"
+
+[node name="Seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Options_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(110, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4p4ur")
+theme_override_styles/normal = SubResource("StyleBoxTexture_yyf7u")
+text = "Options"
+
+[node name="Seperator3" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Exit_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(110, 40)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4p4ur")
+theme_override_styles/normal = SubResource("StyleBoxTexture_uqtq7")
+text = "Exit"
+
+[node name="Seperator" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Options_Menu" parent="." instance=ExtResource("5_fgwqc")]
+visible = false
+layout_mode = 1
